@@ -1,0 +1,6 @@
+$(function() {
+
+    var list = $("#thelist");
+
+
+})

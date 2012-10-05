@@ -1,0 +1,28 @@
+body {
+    font-family: verdana;
+}
+
+
+.header {
+    display: table;
+    margin: 0px auto;
+}
+
+#month-chart {
+    width: 900px;
+    height: 800px;
+}
+
+#main-container {
+
+}
+
+#bar-chart {
+    float: left;
+    margin: 50px;
+}
+
+#line-chart {
+    float: left;
+    margin: 50px;
+}

@@ -1,0 +1,29 @@
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    font-size: 0.8em;
+    border: 1px solid #909090;
+    border-radius: 2px;
+    padding: 3px;
+    margin: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+li .delete-icon {
+    font-size: 1em;
+    color: red;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-weight: bold;
+    border-left: 1px solid #909090;
+    padding: 3px 5px 3px 5px;
+}
+
+control-box {
+    overflow: scroll;
+}

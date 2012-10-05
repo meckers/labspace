@@ -1,0 +1,3 @@
+DrawingAgent = Class.extend({
+
+});
