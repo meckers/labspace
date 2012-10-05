@@ -1,0 +1,11 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+#{ set baseScriptsDir:'/public/' + area + '/javascripts' /}
+#{ set baseStylesDir:'/public/' + area + '/stylesheets' /}
+#{ set areaScripts: [] /}
+#{ set areaStyles: [] /}
+
+#{ setscripts area:area, areaScripts:areaScripts /}
+#{ setstyles area:area, areaStyles:areaStyles /}
+
+#{include '/AreaIncludes/' + area + '/main.html'/}

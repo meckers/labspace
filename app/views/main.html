@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        #{get 'meta' /}
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/simple-javascript-inheritance.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <!--script type="text/javascript" src="https://www.google.com/jsapi"></script-->
+
+        #{list items:areaStyles, as:'style' }
+            <link rel="stylesheet" media="screen" href="${baseStylesDir}/${style}" />
+        #{/list}
+
+        #{list items:areaScripts, as:'script' }
+            <script src="${baseScriptsDir}/${script}?nc=${new Date().getTime()}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{/list}
+
+    </head>
+    <body>
+        #{doLayout /}
+    </body>
+</html>
