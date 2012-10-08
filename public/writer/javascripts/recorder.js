@@ -12,6 +12,10 @@ Recorder = Class.extend({
     },
 
     recordStroke: function(stroke) {
+        var me = this;
         this.strokes.push(stroke);
+        this.timer = window.setTimeout(function() {
+            console.log("recorded strokes", me.strokes.length);
+        }, 2000);
     }
 });

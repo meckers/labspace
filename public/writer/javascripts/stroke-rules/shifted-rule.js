@@ -14,5 +14,12 @@ ShiftedRule = StrokeRule.extend({
 
     resolve: function(stroke) {
         return KeyMapper.shifted[stroke.keyCode];
+    },
+
+    checkAndResolve: function(stroke) {
+        if (stroke.shifted && KeyMapper.shifted[stroke.keyCode] !== null) {
+            return KeyMapper.shifted[stroke.keyCode];
+        }
+        return null;
     }
 });

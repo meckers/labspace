@@ -49,13 +49,24 @@ DomMatrix = Class.extend({
     },
 
     backspace: function() {
-
         try {
-            var prevCell = this.getCell(this.currentCell.row, this.currentCell.col-1);
+            var loc = this.currentCell.col === 0 ?
+                { r: this.currentCell.row - 1, c: this.dimensions.cols-1 }
+                :
+                { r: this.currentCell.row, c: this.currentCell.col - 1};
+            var prevCell = this.getCell(loc.r, loc.c);
             this.writeToCell(prevCell, '');
             this.goToPreviousCell();
             this.pullLine();
-            //this.writeToCurrentCell('');
+        }
+        catch(ex) {
+            console.error(ex.message);
+        }
+    },
+
+    enter: function() {
+        try {
+            this.gotoCell(this.currentCell.row + 1, 0);
         }
         catch(ex) {
             console.error(ex.message);
@@ -97,6 +108,7 @@ DomMatrix = Class.extend({
 
     },
 
+    /*
     arrowKey: function(keyCode) {
         switch(keyCode) {
             case 37:
@@ -112,7 +124,9 @@ DomMatrix = Class.extend({
                 this.goDown(1);
                 break;
         }
-    },
+    },*/
+
+
 
 
 
@@ -131,6 +145,14 @@ DomMatrix = Class.extend({
 
         this.gotoCell(row, col);
 
+    },
+
+    goLeft: function() {
+        this.goToPreviousCell();
+    },
+
+    goRight: function() {
+        this.goToNextCell();
     },
 
     goUp: function() {
