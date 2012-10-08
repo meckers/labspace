@@ -23,7 +23,7 @@ SpecialKeyRule = StrokeRule.extend({
             if (stroke.keyCode === KeyMapper.special[p]) {
                 console.log("triggering", p);
                 Events.trigger("SPECIAL_KEY_" + p.toUpperCase(), stroke);
-                return false;
+                //return false;
             }
         }
         return null;

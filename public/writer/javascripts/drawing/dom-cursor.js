@@ -4,7 +4,7 @@ DomCursor = Class.extend({
     interval: null,
     cell: null,
 
-    init: function(cell, width, height) {
+    init: function(width, height) {
         this.element = $("<div></div>");
         this.element.css({
             'width': width,
@@ -13,8 +13,6 @@ DomCursor = Class.extend({
             'position': 'absolute'
         });
         this.element.className = 'cursor';
-
-        this.setCell(cell);
         this.blink();
     },
 

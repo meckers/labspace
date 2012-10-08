@@ -1,7 +1,7 @@
 StrokeHandler = Class.extend({
 
     drawingAgent: null,
-    cursorCodes: [37, 38, 39, 40],
+    //cursorCodes: [37, 38, 39, 40],
     rules: [],
 
     init: function(drawingAgent) {
@@ -12,10 +12,12 @@ StrokeHandler = Class.extend({
     },
 
     setupRules: function() {
-        this.rules.push(new AlphaNumericRule());
-        this.rules.push(new UnmodifiedRule());
-        this.rules.push(new ShiftedRule());
-        this.rules.push(new SpecialKeyRule());
+        this.rules = [
+            new AlphaNumericRule(),
+            new UnmodifiedRule(),
+            new ShiftedRule(),
+            new SpecialKeyRule()
+        ];
     },
 
     listen: function() {
@@ -26,25 +28,30 @@ StrokeHandler = Class.extend({
         $(document).keydown(function(e) {
             return me.dispatchStroke(e);
         });
+        Events.register("INCOMING_KEYSTROKE", this, this.handleStroke);
     },
 
 
     dispatchStroke: function(keyEvent) {
         var stroke = new Stroke(keyEvent);
         Events.trigger("INCOMING_KEYSTROKE", stroke);
-        return this.handleStroke(stroke);
+        Events.trigger("RECORDABLE_KEYSTROKE", stroke);
+        /*return this.handleStroke(stroke);*/
+        if (keyEvent.keyCode === 8) {
+            return false;
+        }
     },
 
     handleStroke: function(stroke) {
         //this.handleStroke(stroke);
         var chr = this.applyRules(stroke);
-        console.log(stroke.event.type, "stroke with code ", stroke.keyCode, "was checked by rules", stroke.appliedRules, "before resolving to the char", chr);
+        //console.log(stroke.event.type, "stroke with code ", stroke.keyCode, "was checked by rules", stroke.appliedRules, "before resolving to the char", chr);
         //console.log("char returned from rules", chr);
 
-        if (chr === false) {
+        /*if (chr === false) {
             return false;
         }
-        else if (chr !== undefined) {
+        else*/ if (chr !== undefined) {
             this.drawingAgent.draw(chr);
         }
     },

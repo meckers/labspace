@@ -22,9 +22,19 @@ DomMatrix = Class.extend({
         this.dimensions.rows = Math.floor($(element).height() / this.cellSize.height);
         //console.log("DomMatrix inited", this);
 
+        this.reset();
+    },
+
+    empty: function() {
+        this.rows = [];
+        $(this.element).empty();
+    },
+
+    reset: function() {
+        this.empty();
         this.createCells();
-        this.currentCell = this.getCell(0,0);
-        this.cursor = new DomCursor(this.currentCell, this.cellSize.width, this.cellSize.height);
+        this.cursor = new DomCursor(this.cellSize.width, this.cellSize.height);
+        this.setCell(this.getCell(0,0));
     },
 
     createCells: function() {
@@ -37,6 +47,7 @@ DomMatrix = Class.extend({
             }
             this.rows.push(row);
         }
+        console.log("createCells finished", this);
     },
 
     getCell: function(row, col) {

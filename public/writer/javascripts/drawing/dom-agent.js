@@ -20,12 +20,14 @@ DomAgent = DrawingAgent.extend({
         Events.register("SPECIAL_KEY_DOWN", this, this.goDown);
     },
 
+
+
     prepare: function() {
 
     },
 
-    handleStroke: function(stroke) {
-
+    reset: function() {
+        this.matrix.reset();
     },
 
     draw: function(chr) {
