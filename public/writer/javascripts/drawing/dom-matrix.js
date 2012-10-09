@@ -20,8 +20,6 @@ DomMatrix = Class.extend({
         this.element = element;
         this.dimensions.cols = Math.floor($(element).width() / this.cellSize.width);
         this.dimensions.rows = Math.floor($(element).height() / this.cellSize.height);
-        //console.log("DomMatrix inited", this);
-
         this.reset();
     },
 
@@ -119,28 +117,6 @@ DomMatrix = Class.extend({
 
     },
 
-    /*
-    arrowKey: function(keyCode) {
-        switch(keyCode) {
-            case 37:
-                this.goToPreviousCell();
-                break;
-            case 38:
-                this.goUp(1);
-                break;
-            case 39:
-                this.goToNextCell();
-                break;
-            case 40:
-                this.goDown(1);
-                break;
-        }
-    },*/
-
-
-
-
-
     goToPreviousCell: function() {
         var col = null;
         var row = null;
@@ -197,7 +173,6 @@ DomMatrix = Class.extend({
     },
 
     gotoCell: function(row, col) {
-        //this.currentCell = this.getCell(row, col);
         this.setCell(this.getCell(row, col));
     },
 

@@ -12,3 +12,20 @@
     font-weight: bold;
     color: white;
 }
+
+.char-A {
+
+}
+
+.imgchar-double-size {
+    width: 16px;
+    height: 16px;
+}
+
+.textcolor-white {
+    background-color: white;
+}
+
+.sprite-cav-of-sillahc {
+    background-image: url(/public/writer/images/cav_of_sillahc_x2.png);
+}

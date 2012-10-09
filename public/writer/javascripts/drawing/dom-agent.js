@@ -12,6 +12,7 @@ DomAgent = DrawingAgent.extend({
 
     //todo: denna passar nog bättre i DrawingAgent.
     listen: function() {
+        Events.register("CHARACTER_RESOLVED", this, this.draw);
         Events.register("SPECIAL_KEY_BACKSPACE", this, this.backspace);
         Events.register("SPECIAL_KEY_ENTER", this, this.enter);
         Events.register("SPECIAL_KEY_LEFT", this, this.goLeft);
@@ -19,8 +20,6 @@ DomAgent = DrawingAgent.extend({
         Events.register("SPECIAL_KEY_RIGHT", this, this.goRight);
         Events.register("SPECIAL_KEY_DOWN", this, this.goDown);
     },
-
-
 
     prepare: function() {
 

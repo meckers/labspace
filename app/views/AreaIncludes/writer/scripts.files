@@ -1,4 +1,5 @@
 keymapper.js
+sprite-manager.js
 events.js
 default.js
 drawing/drawing-agent.js

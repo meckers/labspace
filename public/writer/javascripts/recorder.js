@@ -2,7 +2,6 @@ Recorder = Class.extend({
 
     strokes: [],
     strokeIndex: 0,
-    //strokeHandler: null,
 
     init: function() {
         this.listen();
@@ -15,9 +14,6 @@ Recorder = Class.extend({
     recordStroke: function(stroke) {
         var me = this;
         this.strokes.push(stroke);
-        /*this.timer = window.setTimeout(function() {
-            console.log("recorded strokes", me.strokes.length);
-        }, 2000);*/
     },
 
     startPlayback: function() {
@@ -29,7 +25,7 @@ Recorder = Class.extend({
         var me = this;
         window.setTimeout(function() {
             Events.trigger("INCOMING_KEYSTROKE", stroke);
-            if (me.strokeIndex + 1 !== me.strokes.length) {
+            if (me.strokeIndex !== me.strokes.length) {
                 me.playback(me.strokes[me.strokeIndex++]);
             }
         }, 40);

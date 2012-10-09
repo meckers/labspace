@@ -5,17 +5,6 @@ ShiftedRule = StrokeRule.extend({
     alted: false,
     eventType: 'keypress',
 
-    check: function(stroke) {
-        if (stroke.shifted && KeyMapper.shifted[stroke.keyCode] !== null) {
-            return this.success('shifted keymap', stroke);
-        }
-        this.fail(stroke);
-    },
-
-    resolve: function(stroke) {
-        return KeyMapper.shifted[stroke.keyCode];
-    },
-
     checkAndResolve: function(stroke) {
         if (stroke.shifted && KeyMapper.shifted[stroke.keyCode] !== null) {
             return KeyMapper.shifted[stroke.keyCode];

@@ -1,12 +1,9 @@
 StrokeHandler = Class.extend({
 
     drawingAgent: null,
-    //cursorCodes: [37, 38, 39, 40],
     rules: [],
 
-    init: function(drawingAgent) {
-        //console.info("StrokeHandler initialized", drawingAgent);
-        this.drawingAgent = drawingAgent;
+    init: function() {
         this.setupRules();
         this.listen();
     },
@@ -22,13 +19,16 @@ StrokeHandler = Class.extend({
 
     listen: function() {
         var me = this;
+
+        Events.register("INCOMING_KEYSTROKE", this, this.handleStroke);
+
         $(document).keypress(function(e) {
+            //console.log("code", e.keyCode);
             return me.dispatchStroke(e);
         });
         $(document).keydown(function(e) {
             return me.dispatchStroke(e);
         });
-        Events.register("INCOMING_KEYSTROKE", this, this.handleStroke);
     },
 
 
@@ -43,21 +43,24 @@ StrokeHandler = Class.extend({
     },
 
     handleStroke: function(stroke) {
-        //this.handleStroke(stroke);
-        var chr = this.applyRules(stroke);
-        //console.log(stroke.event.type, "stroke with code ", stroke.keyCode, "was checked by rules", stroke.appliedRules, "before resolving to the char", chr);
-        //console.log("char returned from rules", chr);
+        this.applyRules(stroke);
+    },
 
-        /*if (chr === false) {
-            return false;
-        }
-        else*/ if (chr !== undefined) {
-            this.drawingAgent.draw(chr);
+    applyRules: function(stroke) {
+        for (k=0; k<this.rules.length; k++) {
+            var r = this.rules[k];
+            if (r.eventType === stroke.event.type) {
+                var result = r.checkAndResolve(stroke);
+                if (result !== null) {
+                    Events.trigger("CHARACTER_RESOLVED", result);
+                    return;
+                }
+            }
         }
     },
 
-
-    applyRules: function(stroke) {
+    /*
+    applyRules_: function(stroke) {
         for (k=0; k<this.rules.length; k++) {
             var r = this.rules[k];
             if (r.eventType === stroke.event.type) {
@@ -69,16 +72,13 @@ StrokeHandler = Class.extend({
         }
     },
 
-    applyRules_: function(stroke) {
+    applyRules__: function(stroke) {
         for (k=0; k<this.rules.length; k++) {
             var r = this.rules[k];
-            //console.log("checking rule", r.name, r.eventType, stroke.event.type);
             if (r.eventType === stroke.event.type && r.check(stroke)) {
                 return r.resolve(stroke);
             }
-            else if (r.eventType !== stroke.event.type) {
-                //console.log("rule", r.name, "skipped due to unsupported event type!");
-            }
         }
-    }
+    }*/
+
 });

@@ -1,13 +1,15 @@
 
 Writer = Class.extend({
 
-    //writerCanvas: null,
     recorder: null,
-    loggingEnabled: true,
+    drawingAgent: null,
 
     init: function() {
-        //this.writerCanvas = new WriterCanvas(canvasElement);
-        this.strokeHandler = new StrokeHandler(new DomAgent('#char-matrix'));
+        this.drawingAgent = new DomAgent("#char-matrix");
+        this.strokeHandler = new StrokeHandler();
+        /*this.strokeHandler = new StrokeHandler({
+            drawingAgent: this.drawingAgent
+        });*/
         this.recorder = new Recorder();
         this.listen();
     },
@@ -15,8 +17,7 @@ Writer = Class.extend({
     listen: function() {
         var me = this;
         $("#playback").click(function() {
-            //console.log("this should clear the matrix");
-            me.strokeHandler.drawingAgent.reset();
+            me.drawingAgent.reset();
             me.recorder.startPlayback();
         });
     }
