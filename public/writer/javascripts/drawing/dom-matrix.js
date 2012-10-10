@@ -1,10 +1,11 @@
 DomMatrix = Class.extend({
 
     element: null,
+    currentColor: 'white',
 
     cellSize: {
-        width: 10,
-        height: 10
+        width: 16,
+        height: 16
     },
 
     dimensions: {
@@ -64,7 +65,7 @@ DomMatrix = Class.extend({
                 :
                 { r: this.currentCell.row, c: this.currentCell.col - 1};
             var prevCell = this.getCell(loc.r, loc.c);
-            this.writeToCell(prevCell, '');
+            this.writeToCell(prevCell, ' ');
             this.goToPreviousCell();
             this.pullLine();
         }

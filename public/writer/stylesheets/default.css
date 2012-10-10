@@ -3,8 +3,8 @@
 }
 
 #char-matrix {
-    width: 400px;
-    height: 400px;
+    width: 640px;
+    height: 640px;
     border: 1px solid black;
     position: relative;
     font-family: Courier;
@@ -13,9 +13,11 @@
     color: white;
 }
 
-.char-A {
-
+.char-sprite {
+    background-color: black;
+    position: absolute;
 }
+
 
 .imgchar-double-size {
     width: 16px;
@@ -26,6 +28,6 @@
     background-color: white;
 }
 
-.sprite-cav-of-sillahc {
+.cav-of-sillahc {
     background-image: url(/public/writer/images/cav_of_sillahc_x2.png);
 }

@@ -1,7 +1,7 @@
 CanvasMatrix = Class.extend({
 
-    cellWidth: 10,
-    cellHeight: 10,
+    cellWidth: 16,
+    cellHeight: 16,
     rowLength: 0,
     colLength: 0,
     cells: [],

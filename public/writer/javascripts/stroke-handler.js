@@ -33,6 +33,7 @@ StrokeHandler = Class.extend({
 
 
     dispatchStroke: function(keyEvent) {
+        console.log(keyEvent.type, "stroke", keyEvent.keyCode, keyEvent);
         var stroke = new Stroke(keyEvent);
         Events.trigger("INCOMING_KEYSTROKE", stroke);
         Events.trigger("RECORDABLE_KEYSTROKE", stroke);
