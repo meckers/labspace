@@ -31,3 +31,31 @@
 .cav-of-sillahc {
     background-image: url(/public/writer/images/cav_of_sillahc_x2.png);
 }
+
+.color-white {
+    background-color: #fff;
+}
+
+.color-yellow {
+    background-color: yellow;
+}
+
+.color-lightbrown {
+    background-color: #C49B39;
+}
+
+.color-darkbrown {
+    background-color: #8C6508;
+}
+
+.color-pink {
+    background-color: #FF8C8C;
+}
+
+.color-darkgrey {
+    background-color: #525252;
+}
+
+.color-mediumgrey {
+    background-color: #8A8A8A;
+}

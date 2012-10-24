@@ -39,7 +39,7 @@ SpriteManager = Class.extend({
 
         var charIndex = SpriteMap[char];
 
-        console.log(charIndex);
+        //console.log(charIndex);
 
         return {
             top: charIndex[0],

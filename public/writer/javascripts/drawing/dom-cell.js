@@ -6,6 +6,7 @@ DomCell = Class.extend({
     charElement: null,
     spriteManager: null,
     chr: '',
+    color: 'white',
 
     init: function(width, height, row, col) {
         this.spriteManager = new SpriteManager();
@@ -22,7 +23,7 @@ DomCell = Class.extend({
         //this.setCharElement();
         //this.element.append(this.charElement);
         this.setFont();
-        this.setColor();
+        this.setColor(this.color);
         this.setToSpace();
     },
 
@@ -38,9 +39,19 @@ DomCell = Class.extend({
     },*/
 
     setColor: function(color) {
+
+        this.color = color;
+
+        $(this.element).removeClass (function (index, css) {
+            return (css.match (/\bcolor-\S+/g) || []).join(' ');
+        });
+
+        $(this.element).addClass("color-" + color);
+
+        /*
         this.element.css({
             'background-color': 'white'
-        });
+        });*/
     },
 
     setFont: function(font) {
@@ -57,6 +68,7 @@ DomCell = Class.extend({
         var charHeight = this.spriteManager.charSize.height;
         var spritePos = SpriteMap[chr];
         this.chr = chr;
+        this.setColor(this.color);
 
         this.element.css({
             'background-position': '-' + (charWidth * spritePos[1]) + 'px ' + '-' + (charWidth * spritePos[0]) + 'px'

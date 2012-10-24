@@ -46,7 +46,7 @@ DomMatrix = Class.extend({
             }
             this.rows.push(row);
         }
-        console.log("createCells finished", this);
+        //console.log("createCells finished", this);
     },
 
     getCell: function(row, col) {
@@ -98,6 +98,7 @@ DomMatrix = Class.extend({
 
     writeToCell: function(cell, chr) {
         //$(cell.element).html(chr);
+        cell.setColor(this.currentColor);
         cell.write(chr);
     },
 
@@ -180,6 +181,41 @@ DomMatrix = Class.extend({
     setCell: function(cell) {
         this.currentCell = cell;
         this.cursor.setCell(this.currentCell);
+    },
+
+    setColor: function(color) {
+        this.currentColor = color;
+        console.log("current color is now", color);
+    },
+
+    dump: function() {
+
+        var data = { rows: [] };
+
+        for (r=0; r<this.dimensions.rows; r++) {
+            var row = { cols: [] };
+            for (c=0; c<this.dimensions.cols; c++) {
+                var cell = this.rows[r].cols[c];
+                row.cols.push({
+                    ch: cell.getChar(),
+                    co: cell.color
+                });
+            }
+            data.rows.push(row);
+        }
+
+        $("#json").text(JSON.stringify(data));
+    },
+
+    unDump: function(obj) {
+
+        this.reset();
+        for (r=0; r<this.dimensions.rows; r++) {
+            for (c=0; c<this.dimensions.cols; c++) {
+                this.getCell(r, c).write(obj.rows[r].cols[c].ch);
+            }
+        }
+        //console.log("createCells finished", this);
     }
 
 });

@@ -15,7 +15,7 @@ AlphaNumericRule = StrokeRule.extend({
     }],
 
     checkAndResolve: function(stroke) {
-        if (!stroke.shifted && !stroke.alted) {
+        if (!stroke.isModified()) {
             for (i = 0; i<this.ranges.length; i++) {
                 if (stroke.keyCode >= this.ranges[i].from
                     && stroke.keyCode <= this.ranges[i].to

@@ -20,6 +20,12 @@ Writer = Class.extend({
             me.drawingAgent.reset();
             me.recorder.startPlayback();
         });
+        $("#dump").click(function() {
+            me.drawingAgent.matrix.dump();
+        });
+        $("#undump").click(function() {
+            me.drawingAgent.matrix.unDump(staticLetters.test);
+        });
     }
 });
 

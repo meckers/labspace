@@ -2,6 +2,7 @@ keymapper.js
 sprite-manager.js
 events.js
 default.js
+static-letters.js
 drawing/drawing-agent.js
 drawing/canvas-agent.js
 drawing/canvas-matrix.js
@@ -12,6 +13,7 @@ drawing/dom-cursor.js
 stroke-rules/stroke-rule.js
 stroke-rules/alphanumeric-rule.js
 stroke-rules/shifted-rule.js
+stroke-rules/ctrld-rule.js
 stroke-rules/special-key-rule.js
 stroke-rules/unmodified-rule.js
 stroke-handler.js

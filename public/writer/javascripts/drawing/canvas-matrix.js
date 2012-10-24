@@ -6,6 +6,7 @@ CanvasMatrix = Class.extend({
     colLength: 0,
     cells: [],
     currentCell: null,
+    currentColor: 'white',
 
     init: function(canvasWidth, canvasHeight) {
 
@@ -64,12 +65,5 @@ CanvasMatrix = Class.extend({
 
         console.error("Warning: getCell returning null");
         return null;
-    },
-
-    testFill: function() {
-        var sample = "ABCDEFGHIJK";
-        $(this.cells).each(function(i,e) {
-            e.char = sample[Math.floor(Math.random()*11)];
-        });
     }
 });
